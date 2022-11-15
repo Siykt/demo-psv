@@ -9,11 +9,11 @@ import { TAB_DATA_MAPS, ZH_CN_LANG } from './constants';
 function App() {
   const appRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Viewer | null>(null);
-  const [tab, setTab] = useState(new URL(window.location.href).searchParams.get('tab') ?? 'lssy');
+  const [VRId, setVRId] = useState(new URL(window.location.href).searchParams.get('VRId') ?? 'lssy');
 
   useEffect(() => {
     if (!appRef.current) return;
-    const tabData = TAB_DATA_MAPS[tab];
+    const tabData = TAB_DATA_MAPS[VRId];
     if (!tabData) return;
 
     let viewer = viewerRef.current;
@@ -30,12 +30,12 @@ function App() {
     }
     viewer.getPlugin(GalleryPlugin)?.setItems(
       tabData.assets.map((panorama, index) => ({
-        id: `${tab}-${index}`,
+        id: `${VRId}-${index}`,
         panorama,
         name: `${tabData.name}-${index + 1}`,
       }))
     );
-  });
+  }, [VRId]);
 
   return <div ref={appRef} className='App'></div>;
 }

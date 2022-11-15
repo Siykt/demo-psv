@@ -45,7 +45,6 @@ export const TAB_DATA_MAPS: Record<string, { name: string; assets: string[] }> =
       'https://ysyz-oss.hz1024.com/2022/ysyz_vr/cqm2021/cqm6.jpg',
     ],
   },
-
   zkzgj: {
     name: '竺可桢故居',
     assets: [
